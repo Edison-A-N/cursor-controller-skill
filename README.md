@@ -77,7 +77,7 @@ cp SKILL.md ~/.config/openclaw/skills/cursor-controller/
 
 ## 🚀 Quick Start
 
-Once installed, start using Cursor agent from OpenClaw:
+Once you have [Cursor CLI](https://cursor.com/docs/cli/overview) installed (`agent` command), start using this Skill from OpenClaw:
 
 ```bash
 # Interactive mode
@@ -182,6 +182,48 @@ agent --plan "migrate to TypeScript"
 agent --mode=ask "explain this codebase"
 ```
 
+## 🔧 Advanced Features
+
+### Sandbox Mode
+
+Control command execution security:
+```bash
+# Disable sandbox (allow all commands)
+agent --sandbox disabled "run npm install"
+
+# Toggle in interactive mode
+/sandbox
+```
+
+### Max Mode
+
+Enable maximum token usage for complex tasks:
+```bash
+# Enable Max Mode
+agent --max-mode "complex architecture design"
+
+# Toggle in interactive mode
+/max-mode on
+```
+
+### Model Selection
+
+Choose specific models for your task:
+```bash
+# Use specific model
+agent -p "task" --model "gpt-5.2"
+agent -p "task" --model "claude-3-5-sonnet"
+```
+
+### Batch Processing
+
+Process multiple files in a loop:
+```bash
+# Process multiple files
+for file in src/*.ts; do
+  agent -p "add error handling to $file" --output-format text
+done
+```
 ## ☁️ Cloud Agent
 
 Push tasks to Cursor Cloud Agent to continue running while away:
@@ -220,6 +262,15 @@ agent --resume="chat-id-here"
 
 Contributions are welcome! Please feel free to submit issues or pull requests.
 
+## ⚠️ Security & Notes
+
+### Security Notes
+
+Cursor displays secure masked prompts for `sudo` commands. Password flows directly to `sudo` via secure IPC; AI never sees it.
+
+### Rate Limits
+
+Be mindful of API rate limits when running automated tasks.
 ## 📄 License
 
 MIT License - feel free to use in personal and commercial projects.

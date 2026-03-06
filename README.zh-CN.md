@@ -4,6 +4,10 @@
 [![GitHub](https://img.shields.io/badge/GitHub-cursor--controller-black?logo=github)](https://github.com/Edison-A-N/cursor-controller)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
+> ℹ️ **重要提示**：这是一个 OpenClaw Agent **Skill**，不是独立工具。
+> 它让 OpenClaw agent 可以通过 `agent` CLI 控制 Cursor AI。
+> 技术规范请参阅 [SKILL.md](./SKILL.md)。
+>
 
 从 OpenClaw 终端直接控制 Cursor AI agent，进行代码编写、审查和修改。
 
@@ -37,13 +41,15 @@ agent --version
 ```
 
 ### 安装此 Skill
+> **注意**：此 Skill 是一个纯文档包。安装它意味着将 `SKILL.md` 文件复制到你的 OpenClaw skills 目录。实际功能需要单独安装 [Cursor CLI](https://cursor.com/docs/cli/overview)（`agent` 命令）。
+
 
 **选项 1：项目级别安装**（推荐用于团队项目）
 
 ```bash
 cd your-project
 mkdir -p .openclaw/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/SKILL.md \
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller/master/SKILL.md \
   -o .openclaw/skills/cursor-controller/SKILL.md
 ```
 
@@ -51,15 +57,15 @@ curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/mas
 
 ```bash
 mkdir -p ~/.config/openclaw/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/SKILL.md \
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller/master/SKILL.md \
   -o ~/.config/openclaw/skills/cursor-controller/SKILL.md
 ```
 
 **选项 3：克隆仓库**
 
 ```bash
-git clone https://github.com/Edison-A-N/cursor-controller-skill.git
-cd cursor-controller-skill
+git clone https://github.com/Edison-A-N/cursor-controller.git
+cd cursor-controller
 
 # 安装到项目
 mkdir -p /path/to/your/project/.openclaw/skills/cursor-controller
@@ -72,7 +78,7 @@ cp SKILL.md ~/.config/openclaw/skills/cursor-controller/
 
 ## 🚀 快速开始
 
-安装完成后，从 OpenClaw 启动 Cursor agent：
+安装完成后，当你已经安装了 [Cursor CLI](https://cursor.com/docs/cli/overview)（`agent` 命令），就可以从 OpenClaw 启动 Cursor agent：
 
 ```bash
 # 交互模式
@@ -177,6 +183,49 @@ agent --plan "migrate to TypeScript"
 agent --mode=ask "explain this codebase"
 ```
 
+## 🔧 高级功能
+
+### 沙盒模式
+
+控制命令执行安全性：
+```bash
+# 禁用沙盒（允许所有命令）
+agent --sandbox disabled "run npm install"
+
+# 在交互模式中切换
+/sandbox
+```
+
+### Max 模式
+
+为复杂任务启用最大 token 使用量：
+```bash
+# 启用 Max 模式
+agent --max-mode "complex architecture design"
+
+# 在交互模式中切换
+/max-mode on
+```
+
+### 模型选择
+
+为你的任务选择特定模型：
+```bash
+# 使用特定模型
+agent -p "task" --model "gpt-5.2"
+agent -p "task" --model "claude-3-5-sonnet"
+```
+
+### 批处理
+
+循环处理多个文件：
+```bash
+# 处理多个文件
+for file in src/*.ts; do
+  agent -p "add error handling to $file" --output-format text
+done
+```
+
 ## ☁️ Cloud Agent
 
 将任务推送到 Cursor Cloud Agent，离开后仍可继续运行：
@@ -210,6 +259,16 @@ agent --resume="chat-id-here"
 
 - [Cursor CLI 文档](https://cursor.com/docs/cli/overview)
 - [OpenClaw Skills](https://openclaw.ai/docs/skills/)
+
+## ⚠️ 安全与注意事项
+
+### 安全说明
+
+Cursor 会为 `sudo` 命令显示安全掩码提示。密码通过安全 IPC 直接流向 `sudo`；AI 永远不会看到它。
+
+### 速率限制
+
+运行自动化任务时请注意 API 速率限制。
 
 ## 🤝 贡献
 
