@@ -1,15 +1,15 @@
 # Cursor Controller Skill
 
-[![OpenCode](https://img.shields.io/badge/OpenCode-Skill-blue)](https://opencode.ai)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://openclaw.ai)
 [![GitHub](https://img.shields.io/badge/GitHub-cursor--controller-black?logo=github)](https://github.com/Edison-A-N/cursor-controller-skill)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-从 OpenCode 终端直接控制 Cursor AI agent，进行代码编写、审查和修改。
+从 OpenClaw 终端直接控制 Cursor AI agent，进行代码编写、审查和修改。
 
 ## 🎯 功能介绍
 
-此 Skill 让 OpenCode agent 能够：
+此 Skill 让 OpenClaw agent 能够：
 - 控制 Cursor 的 AI agent 完成编码任务
 - 通过 Cursor 执行代码审查和安全分析
 - 运行自动化代码修改和重构
@@ -42,17 +42,17 @@ agent --version
 
 ```bash
 cd your-project
-mkdir -p .opencode/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.opencode/skills/cursor-controller/SKILL.md \
-  -o .opencode/skills/cursor-controller/SKILL.md
+mkdir -p .openclaw/skills/cursor-controller
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+  -o .openclaw/skills/cursor-controller/SKILL.md
 ```
 
 **选项 2：全局级别安装**（所有项目可用）
 
 ```bash
-mkdir -p ~/.config/opencode/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.opencode/skills/cursor-controller/SKILL.md \
-  -o ~/.config/opencode/skills/cursor-controller/SKILL.md
+mkdir -p ~/.config/openclaw/skills/cursor-controller
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+  -o ~/.config/openclaw/skills/cursor-controller/SKILL.md
 ```
 
 **选项 3：克隆仓库**
@@ -62,17 +62,17 @@ git clone https://github.com/Edison-A-N/cursor-controller-skill.git
 cd cursor-controller-skill
 
 # 安装到项目
-mkdir -p /path/to/your/project/.opencode/skills/cursor-controller
-cp .opencode/skills/cursor-controller/SKILL.md /path/to/your/project/.opencode/skills/cursor-controller/
+mkdir -p /path/to/your/project/.openclaw/skills/cursor-controller
+cp .openclaw/skills/cursor-controller/SKILL.md /path/to/your/project/.openclaw/skills/cursor-controller/
 
 # 或全局安装
-mkdir -p ~/.config/opencode/skills/cursor-controller
-cp .opencode/skills/cursor-controller/SKILL.md ~/.config/opencode/skills/cursor-controller/
+mkdir -p ~/.config/openclaw/skills/cursor-controller
+cp .openclaw/skills/cursor-controller/SKILL.md ~/.config/openclaw/skills/cursor-controller/
 ```
 
 ## 🚀 快速开始
 
-安装完成后，从 OpenCode 启动 Cursor agent：
+安装完成后，从 OpenClaw 启动 Cursor agent：
 
 ```bash
 # 交互模式
@@ -87,6 +87,53 @@ agent -p "review src/ for security issues" --output-format text
 # 继续之前的会话
 agent resume
 ```
+## 🔐 认证
+
+使用 Cursor agent 之前，需要先完成认证。Cursor CLI 支持两种认证方式：
+
+### 浏览器认证（推荐）
+
+最简单的认证方式，使用浏览器完成登录：
+
+```bash
+# 使用浏览器流程登录
+agent login
+
+# 检查认证状态
+agent status
+
+# 退出登录并清除本地存储的认证信息
+agent logout
+```
+
+`agent login` 命令会打开默认浏览器，提示你使用 Cursor 账号登录。完成后，你的凭证会安全地存储在本地。
+
+### API Key 认证
+
+适用于自动化脚本、CI/CD 环境等场景：
+
+1. **生成 API Key**：在 Cursor Dashboard 的 **Integrations > User API Keys** 页面创建
+
+2. **设置 API Key**，有以下两种方式：
+
+**方式一：环境变量（推荐）**
+```bash
+export CURSOR_API_KEY=your_api_key_here
+agent "implement user authentication"
+```
+
+**方式二：命令行参数**
+```bash
+agent --api-key your_api_key_here "implement user authentication"
+```
+
+### 故障排除
+
+- **"Not authenticated" 错误**：运行 `agent login` 或检查 API Key 是否正确设置
+- **SSL 证书错误**：开发环境可使用 `--insecure` 参数
+- **端点问题**：使用 `--endpoint` 参数指定自定义 API 端点
+
+---
 
 ## 📖 常见用例
 
@@ -162,7 +209,7 @@ agent --resume="chat-id-here"
 ## 📚 文档
 
 - [Cursor CLI 文档](https://cursor.com/docs/cli/overview)
-- [OpenCode Skills](https://opencode.ai/docs/skills/)
+- [OpenClaw Skills](https://openclaw.ai/docs/skills/)
 
 ## 🤝 贡献
 
@@ -174,4 +221,4 @@ MIT 许可证 - 可自由用于个人和商业项目。
 
 ---
 
-**注意**：这是一个 OpenCode Agent Skill。使用前请确保已安装 OpenCode。
+**注意**：这是一个 OpenClaw Agent Skill。使用前请确保已安装 OpenClaw。

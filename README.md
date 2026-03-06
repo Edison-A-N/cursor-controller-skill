@@ -1,15 +1,15 @@
 # Cursor Controller Skill
 
-[![OpenCode](https://img.shields.io/badge/OpenCode-Skill-blue)](https://opencode.ai)
+[![OpenClaw](https://img.shields.io/badge/OpenClaw-Skill-blue)](https://openclaw.ai)
 [![GitHub](https://img.shields.io/badge/GitHub-cursor--controller-black?logo=github)](https://github.com/Edison-A-N/cursor-controller-skill)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-Control Cursor AI agent directly from OpenCode terminal to write, review, and modify code.
+Control Cursor AI agent directly from OpenClaw terminal to write, review, and modify code.
 
 ## 🎯 What This Skill Does
 
-This skill enables OpenCode agents to:
+This skill enables OpenClaw agents to:
 - Control Cursor's AI agent for coding tasks
 - Perform code review and security analysis via Cursor
 - Run automated code modifications and refactoring
@@ -42,17 +42,17 @@ agent --version
 
 ```bash
 cd your-project
-mkdir -p .opencode/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.opencode/skills/cursor-controller/SKILL.md \
-  -o .opencode/skills/cursor-controller/SKILL.md
+mkdir -p .openclaw/skills/cursor-controller
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+  -o .openclaw/skills/cursor-controller/SKILL.md
 ```
 
 **Option 2: Global Level** (available in all projects)
 
 ```bash
-mkdir -p ~/.config/opencode/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.opencode/skills/cursor-controller/SKILL.md \
-  -o ~/.config/opencode/skills/cursor-controller/SKILL.md
+mkdir -p ~/.config/openclaw/skills/cursor-controller
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+  -o ~/.config/openclaw/skills/cursor-controller/SKILL.md
 ```
 
 **Option 3: Clone Repository**
@@ -62,17 +62,17 @@ git clone https://github.com/Edison-A-N/cursor-controller-skill.git
 cd cursor-controller-skill
 
 # Install to project
-mkdir -p /path/to/your/project/.opencode/skills/cursor-controller
-cp .opencode/skills/cursor-controller/SKILL.md /path/to/your/project/.opencode/skills/cursor-controller/
+mkdir -p /path/to/your/project/.openclaw/skills/cursor-controller
+cp .openclaw/skills/cursor-controller/SKILL.md /path/to/your/project/.openclaw/skills/cursor-controller/
 
 # Or install globally
-mkdir -p ~/.config/opencode/skills/cursor-controller
-cp .opencode/skills/cursor-controller/SKILL.md ~/.config/opencode/skills/cursor-controller/
+mkdir -p ~/.config/openclaw/skills/cursor-controller
+cp .openclaw/skills/cursor-controller/SKILL.md ~/.config/openclaw/skills/cursor-controller/
 ```
 
 ## 🚀 Quick Start
 
-Once installed, start using Cursor agent from OpenCode:
+Once installed, start using Cursor agent from OpenClaw:
 
 ```bash
 # Interactive mode
@@ -87,6 +87,53 @@ agent -p "review src/ for security issues" --output-format text
 # Continue a previous session
 agent resume
 ```
+## 🔐 Authentication
+
+Before using Cursor agent, you need to authenticate. Cursor CLI supports two methods:
+
+### Browser Authentication (Recommended)
+
+The easiest way to authenticate using your browser:
+
+```bash
+# Log in using browser flow
+agent login
+
+# Check authentication status
+agent status
+
+# Log out and clear stored authentication
+agent logout
+```
+
+The `agent login` command will open your default browser and prompt you to authenticate with your Cursor account. Once completed, your credentials are securely stored locally.
+
+### API Key Authentication
+
+For automation, scripts, or CI/CD environments, use API key authentication:
+
+1. **Generate an API key** in your Cursor dashboard under **Integrations > User API Keys**
+
+2. **Set the API key** using one of these methods:
+
+**Option 1: Environment variable (recommended)**
+```bash
+export CURSOR_API_KEY=your_api_key_here
+agent "implement user authentication"
+```
+
+**Option 2: Command line flag**
+```bash
+agent --api-key your_api_key_here "implement user authentication"
+```
+
+### Troubleshooting
+
+- **"Not authenticated" errors:** Run `agent login` or ensure your API key is correctly set
+- **SSL certificate errors:** Use the `--insecure` flag for development environments
+- **Endpoint issues:** Use the `--endpoint` flag to specify a custom API endpoint
+
+---
 
 ## 📖 Common Use Cases
 
@@ -162,7 +209,7 @@ agent --resume="chat-id-here"
 ## 📚 Documentation
 
 - [Cursor CLI Documentation](https://cursor.com/docs/cli/overview)
-- [OpenCode Skills](https://opencode.ai/docs/skills/)
+- [OpenClaw Skills](https://openclaw.ai/docs/skills/)
 
 ## 🤝 Contributing
 
@@ -174,4 +221,4 @@ MIT License - feel free to use in personal and commercial projects.
 
 ---
 
-**Note**: This is an OpenCode Agent Skill. Make sure you have OpenCode installed to use it.
+**Note**: This is an OpenClaw Agent Skill. Make sure you have OpenClaw installed to use it.
