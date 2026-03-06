@@ -43,7 +43,7 @@ agent --version
 ```bash
 cd your-project
 mkdir -p .openclaw/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/SKILL.md \
   -o .openclaw/skills/cursor-controller/SKILL.md
 ```
 
@@ -51,7 +51,7 @@ curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/mas
 
 ```bash
 mkdir -p ~/.config/openclaw/skills/cursor-controller
-curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/.openclaw/skills/cursor-controller/SKILL.md \
+curl -L https://raw.githubusercontent.com/Edison-A-N/cursor-controller-skill/master/SKILL.md \
   -o ~/.config/openclaw/skills/cursor-controller/SKILL.md
 ```
 
@@ -63,11 +63,11 @@ cd cursor-controller-skill
 
 # Install to project
 mkdir -p /path/to/your/project/.openclaw/skills/cursor-controller
-cp .openclaw/skills/cursor-controller/SKILL.md /path/to/your/project/.openclaw/skills/cursor-controller/
+cp SKILL.md /path/to/your/project/.openclaw/skills/cursor-controller/
 
 # Or install globally
 mkdir -p ~/.config/openclaw/skills/cursor-controller
-cp .openclaw/skills/cursor-controller/SKILL.md ~/.config/openclaw/skills/cursor-controller/
+cp SKILL.md ~/.config/openclaw/skills/cursor-controller/
 ```
 
 ## 🚀 Quick Start
