@@ -40,6 +40,8 @@ agent --version
 ```
 
 ### Install This Skill
+> **Note**: This Skill is a documentation-only package. Installing it means copying the `SKILL.md` file to your OpenClaw skills directory. The actual functionality requires [Cursor CLI](https://cursor.com/docs/cli/overview) (`agent` command) to be installed separately.
+
 
 **Option 1: Project Level** (recommended for team projects)
 
