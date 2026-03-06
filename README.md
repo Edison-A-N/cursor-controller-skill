@@ -4,7 +4,10 @@
 [![GitHub](https://img.shields.io/badge/GitHub-cursor--controller-black?logo=github)](https://github.com/Edison-A-N/cursor-controller)
 
 [English](README.md) | [简体中文](README.zh-CN.md)
-
+> ℹ️ **Important**: This is an OpenClaw Agent **Skill**, not a standalone tool.
+> It enables OpenClaw agents to control Cursor AI via the `agent` CLI.
+> See [SKILL.md](./SKILL.md) for technical specification.
+>
 Control Cursor AI agent directly from OpenClaw terminal to write, review, and modify code.
 
 ## 🎯 What This Skill Does
